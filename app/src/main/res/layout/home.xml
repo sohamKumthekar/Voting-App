@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:background="@drawable/img_5"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="148dp"
+            android:layout_height="127dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="260dp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:onClick="gotoAdmin"
+            android:text="ADMIN"
+            app:layout_constraintEnd_toStartOf="@+id/button4"
+            app:layout_constraintHorizontal_bias="0.156"
+            app:layout_constraintStart_toStartOf="parent"
+            style="@style/ButtonStyle"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="148dp"
+            android:layout_height="127dp"
+            android:layout_marginTop="56dp"
+            android:onClick="gotoProfile"
+            android:text="PROFILE"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/button4"
+            app:layout_constraintTop_toBottomOf="@+id/button4"
+            style="@style/ButtonStyle"
+
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/button10"
+            android:layout_width="148dp"
+            android:layout_height="127dp"
+            android:layout_marginTop="56dp"
+            android:onClick="gotoWinners"
+            android:text="RESULT"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/button3"
+            app:layout_constraintTop_toBottomOf="@+id/button3"
+            style="@style/ButtonStyle"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="148dp"
+            android:layout_height="127dp"
+            android:layout_marginTop="260dp"
+            android:layout_marginEnd="32dp"
+            android:onClick="gotoShowPolls"
+            android:text="SHOW AVAILABLE POLLS"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            style="@style/ButtonStyle"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="169dp"
+            android:layout_height="47dp"
+            android:layout_marginTop="72dp"
+            android:text="Welcome"
+            android:textColor="@color/white"
+            android:textSize="33sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/userIn"
+            android:layout_width="159dp"
+            android:layout_height="50dp"
+            android:text="User"
+            android:textColor="@color/white"
+            android:textSize="33sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textView5"
+            app:layout_constraintTop_toBottomOf="@+id/textView5"
+            app:layout_constraintVertical_bias="0.0" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.drawerlayout.widget.DrawerLayout>
