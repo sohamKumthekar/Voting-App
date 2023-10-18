@@ -37,14 +37,17 @@ public class ShowPollsActivity extends AppCompatActivity {
         databaseReference = firebaseDatabase.getReferenceFromUrl("https://login-register-3e247-default-rtdb.firebaseio.com/");
 
         // Initialize UI elements
+        //listview to list all polls
         pollsListView = findViewById(R.id.polls_listview);
         pollNames = new ArrayList<>();
 
         // Retrieve poll names from the database
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
+            //if data is read successfully
             public void onDataChange(DataSnapshot dataSnapshot) {
                 pollNames.clear();
+                //adding all poll names in the arrayList
                 for (DataSnapshot pollSnapshot : dataSnapshot.child("Election").getChildren()) {
                     String pollName = pollSnapshot.getKey().toString();
                     pollNames.add(pollName);
@@ -98,16 +101,11 @@ public class ShowPollsActivity extends AppCompatActivity {
                                     Toast.makeText(ShowPollsActivity.this, "Election has ended!!", Toast.LENGTH_SHORT).show();
                                 }
                             }
-
                             @Override
                             public void onCancelled(@NonNull DatabaseError error) {
 
                             }
                         });
-
-                        // Handle button click
-                        // You can perform any desired action here, such as navigating to a detail activity
-                        // or starting the voting process for the selected poll
                     }
                 });
 

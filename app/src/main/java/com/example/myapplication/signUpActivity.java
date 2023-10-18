@@ -59,6 +59,7 @@ public class signUpActivity extends AppCompatActivity {
                 } else {
                     databaseReference.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
+                        //called when data is read from users successfully
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             if (snapshot.hasChild(username)) {
                                 Toast.makeText(signUpActivity.this, "User is already registered", Toast.LENGTH_SHORT).show();

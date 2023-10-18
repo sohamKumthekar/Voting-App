@@ -45,12 +45,14 @@ public class CreatePollActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_poll);
 
+        //empty linear layout for candidates
         optionsLayout = findViewById(R.id.optionsLayout);
         addOptionButton = findViewById(R.id.addOptionButton);
         createPollButton = findViewById(R.id.createPollButton);
 
         addOptionButton.setOnClickListener(new View.OnClickListener() {
             @Override
+            //call addOption function
             public void onClick(View v) {
                 addOption();
             }
@@ -65,21 +67,26 @@ public class CreatePollActivity extends AppCompatActivity {
     }
 
     private void addOption() {
+        //to set how to display new parameters in the layout
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT);
 
+        //set the linearLayout for new candidate
         LinearLayout optionLayout = new LinearLayout(this);
         optionLayout.setLayoutParams(layoutParams);
         optionLayout.setOrientation(LinearLayout.HORIZONTAL);
 
+        //EditText - to enter candidate name
         EditText optionEditText = new EditText(this);
         optionEditText.setLayoutParams(new LinearLayout.LayoutParams(
                 0, LinearLayout.LayoutParams.WRAP_CONTENT, 1));
         optionEditText.setHint("Enter candidate name");
 
+        //delete button to remove the candidate
         Button deleteButton = new Button(this);
         deleteButton.setText("Delete");
+
 
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,10 +102,13 @@ public class CreatePollActivity extends AppCompatActivity {
     }
 
     private void createPoll() {
+        //question - election name
+        //optionCount - total candidates
+        //check - becomes 1 if any candidate is not filled
         String question = ((EditText) findViewById(R.id.questionEditText)).getText().toString();
         int optionCount = optionsLayout.getChildCount();
         int check=0;
-        for (int i=0;i<optionCount;i++){
+        for (int i = 0;i < optionCount;i++){
             LinearLayout optionLayout = (LinearLayout) optionsLayout.getChildAt(i);
             EditText optionEditText = (EditText) optionLayout.getChildAt(0);
             String option = optionEditText.getText().toString();
@@ -106,10 +116,10 @@ public class CreatePollActivity extends AppCompatActivity {
                 check=1;
             }
         }
-        if (check==1){
+        if (check == 1){
             Toast.makeText(CreatePollActivity.this, "Fill all candidate boxes or Delete them", Toast.LENGTH_SHORT).show();
         }
-        else if (optionCount<2) {
+        else if (optionCount < 2) {
             Toast.makeText(CreatePollActivity.this, "Add atleast 2 Candidates", Toast.LENGTH_SHORT).show();
         }
         else if(question.equals("")){
@@ -119,17 +129,18 @@ public class CreatePollActivity extends AppCompatActivity {
 ////////
 //                String owner;
                 int pollId=generatePollId();
-                //////////
+
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     DatabaseReference userReference = databaseReference.child("Election").child(question);
-                    ////////
-//                    databaseReference.child("Election").child(owner);
+
+//                  databaseReference.child("Election").child(owner);
                     userReference.child("pollId").setValue(pollId);
                     userReference.child("endElection").setValue(0);
                     userReference.child("createdBy").setValue(logedInUser);
                     userReference.child("Candidates");
-                    /////////
+
+                    //store candidate details
                     for (int i = 0; i < optionCount; i++) {
                         LinearLayout optionLayout = (LinearLayout) optionsLayout.getChildAt(i);
                         EditText optionEditText = (EditText) optionLayout.getChildAt(0);
